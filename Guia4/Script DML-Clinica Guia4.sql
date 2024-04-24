@@ -1,6 +1,6 @@
 -- DML BASE DE DATOS CLINICA
 
-use clinica;
+use clinica3;
 
 insert into departamentos values
 -- idDepartamento, departamento, pais 
@@ -376,7 +376,10 @@ insert into cargos values
     ('5','Vigilancia'),
 	('6','Ordenanza'),
     ('7', 'Enfermero'),
-    ('8', 'Laboratorista');
+    ('8', 'Laboratorista'),
+    ('9', 'Contador'),
+    ('10','Recursos Humanos'),
+    ('11', 'Administrador del Sistema');
 
 insert into Empleados values
 -- idEmpleado, nombresEmpleado, apellidosEmpleado, emailEmpleado,  telefonoEmpleado, fechaContratacion, DuiEmpleado, idDireccion, idTipoCargo
@@ -603,30 +606,35 @@ insert into PersonalProcedimientos  values
   (3, 1, 3, 3),
   (4, 2, 2, 4),
   (5, 1, 2, 5);
+  
+insert into TiposPago (tipoPago) values
+('Efectivo'),
+('Tarjeta de debito'),
+('Tarjeta de credito'); 
 
 insert into FacturaConsulta  values
--- idFacturaConsulta, idConsulta, idPaciente, fecha, total
-  ('1',1, 1, '2024-04-01', '5.00'),
-  ('2',2, 2, '2024-04-02', '15.00'),
-  ('3',3, 3, '2024-04-03', '8.00'),
-  ('4',4, 4, '2024-04-04', '100.00'),
-  ('5',5, 5, '2024-04-05', '20.00');
+-- idFacturaConsulta, idConsulta, idTiPoPago, idPaciente, fecha, total
+  ('1',1, 1, 1, '2024-04-01', '5.00'),
+  ('2',2, 2, 2,  '2024-04-02', '15.00'),
+  ('3',3, 3, 3,'2024-04-03', '8.00'),
+  ('4',4, 4, 1, '2024-04-04', '100.00'),
+  ('5',5, 5, 3, '2024-04-05', '20.00');
   
 insert into FacturasExamenes  values 
--- idFacturaExamenes, idPaciente, fechaFE, totalFE
-  ('1',1, '2024-04-01 08:30:00', '5.00'),
-  ('2',2, '2024-04-02 09:45:00', '15.00'),
-  ('3',3, '2024-04-03 10:15:00', '8.00'),
-  ('4',4, '2024-04-04 11:20:00', '100.00'),
-  ('5',5, '2024-04-05 12:00:00', '20.00');
+-- idFacturaExamenes, idPaciente, idTiPoPago, fechaFE, totalFE
+  ('1',1, 1, '2024-04-01 08:30:00', '5.00'),
+  ('2',2, 2, '2024-04-02 09:45:00', '15.00'),
+  ('3',3, 3, '2024-04-03 10:15:00', '8.00'),
+  ('4',4, 1,  '2024-04-04 11:20:00', '100.00'),
+  ('5',5, 2, '2024-04-05 12:00:00', '20.00');
   
 insert into FacturaProcedimientos  values
--- idFacturaProcedimientos, idPaciente, fechaFP, totalFp
-  ('1',1, '2024-04-01 08:30:00', '5.00'),
-  ('2',2, '2024-04-02 09:45:00', '15.00'),
-  ('3',3, '2024-04-03 10:15:00', '8.00'),
-  ('4',4, '2024-04-04 11:20:00', '100.00'),
-  ('5',5, '2024-04-05 12:00:00', '20.00');
+-- idFacturaProcedimientos, idPaciente, idTiPoPago, fechaFP, totalFp
+  ('1',1, 1, '2024-04-01 08:30:00', '5.00'),
+  ('2',2, 2, '2024-04-02 09:45:00', '15.00'),
+  ('3',3, 3, '2024-04-03 10:15:00', '8.00'),
+  ('4',4, 1, '2024-04-04 11:20:00', '100.00'),
+  ('5',5, 2,'2024-04-05 12:00:00', '20.00');
 
 insert into DetallesFacturaExamen  values
 -- idDetallesFacturaExamen, precioUnitario, idFacturaProcedimientos, idProcedimiento

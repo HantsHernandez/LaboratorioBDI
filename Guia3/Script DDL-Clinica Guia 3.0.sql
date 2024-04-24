@@ -394,39 +394,55 @@ CREATE TABLE  PersonalProcedimientos (
 );
 
 
+CREATE TABLE TiposPago(
+	idTipoPago int primary key auto_increment,
+    tipoPago varchar(45)
+);
+
+
+
 CREATE TABLE  FacturaConsulta (
   idFacturaConsulta INT NOT NULL AUTO_INCREMENT,
   idConsulta INT NOT NULL,
   idPaciente INT NOT NULL,
+  idTiPoPago int not null,
   fecha DATE NOT NULL,
   total DECIMAL(6,2) NOT NULL,
   PRIMARY KEY (idFacturaConsulta),
     FOREIGN KEY (idConsulta)
     REFERENCES Consultas (idConsulta),
     FOREIGN KEY (idPaciente)
-    REFERENCES Pacientes (idPaciente)
+    REFERENCES Pacientes (idPaciente),
+    FOREIGN KEY(idTipoPago)
+    REFERENCES TiposPago(idTipoPago)
 );
 
 
 CREATE TABLE  FacturasExamenes (
   idFacturaExamenes INT NOT NULL AUTO_INCREMENT,
   idPaciente INT NOT NULL,
+  idTiPoPago int not null,
   fechaFE DATETIME(2) NOT NULL,
   totalFE DECIMAL(6,2) NOT NULL,
   PRIMARY KEY (idFacturaExamenes),
     FOREIGN KEY (idPaciente)
-    REFERENCES Pacientes (idPaciente)
+    REFERENCES Pacientes (idPaciente),
+    FOREIGN KEY(idTipoPago)
+    REFERENCES TiposPago(idTipoPago)
 );
 
 
 CREATE TABLE  FacturaProcedimientos (
   idFacturaProcedimientos INT NOT NULL AUTO_INCREMENT,
   idPaciente INT NOT NULL,
+  idTiPoPago int not null,
   fechaFP DATETIME(2) NOT NULL,
   totalFp DECIMAL(6,2) NOT NULL,
   PRIMARY KEY (idFacturaProcedimientos),
     FOREIGN KEY (idPaciente)
-    REFERENCES Pacientes (idPaciente)
+    REFERENCES Pacientes (idPaciente),
+    FOREIGN KEY(idTipoPago)
+    REFERENCES TiposPago(idTipoPago)
 );
 
 
