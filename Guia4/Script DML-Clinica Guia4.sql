@@ -1,6 +1,4 @@
--- DML BASE DE DATOS CLINICA
 
-use clinica3;
 
 insert into departamentos values
 -- idDepartamento, departamento, pais 
@@ -385,14 +383,15 @@ insert into Empleados values
 -- idEmpleado, nombresEmpleado, apellidosEmpleado, emailEmpleado,  telefonoEmpleado, fechaContratacion, DuiEmpleado, idDireccion, idTipoCargo
 	('1','Juan Carlos', 'Rodas Gonzalez', 'JuanCarlos@email.com','6532-4526', '1995-01-01','12345678-0','1','1'),           -- doctor
     ('2','Carlos José', 'Martínez López', 'carlos@email.com', '9632-7412', '1993-04-15', '23456789-0', '2', '2'),           -- secretario
-    ('3','Pedro Manuel', 'Orellana Mendez', 'juanmanuel@email.com', '1478-8523', '1985-06-20', '12345678-9', '3', '1'),      -- doctor
-	('4','Diego Franciso', 'Sanchez Castro','DiegoFrancisco@email.com', '7895-5698', '1990-02-02', '13456524-1','4','5'),    -- vigilancia
-	('5','Raul Edgardo', 'Del Valle Garcia', 'RaulEdgardo@email.com', '6598-2548', '1980-03-03', '19624716-2','5','3'),     -- conductor
-	('6','Mary Carmen', 'Perez de Hernandez', 'MaryCarmen@email.com',  '7965-2526', '1985-04-04', '67825193-3','6','1'),       -- doctor
-    ('7','María Fernanda', 'Gómez Martínez', 'mariafernanda@email.com', '3698-1478', '1991-12-10', '98765432-1', '8', '4'),      -- Laboratorista
-    ('8','Ana Gabriela', 'Pérez Rodríguez', 'anagabriela@email.com', '6112-5421', '1994-08-05', '87654321-0', '9', '6'),         -- ordenanza
-    ('9','Diego Alex', 'Castillo Pérez', 'alexPerez12@email.com', '6576-7728', '1989-10-13', '05553329-6', '10', '7'),         -- enfermero
-    ('10','Angela Maria', 'Escobar Torres', 'escobarAmaria@email.com', '7576-3428', '1996-02-01', '04213589-5', '7', '7');     -- enfermero
+    ('3','Pedro Manuel', 'Orellana Mendez', 'juanmanuel@email.com', '1478-8523', '1985-06-20', '12345678-9', '3', '3'),      -- doctor
+	('4','Diego Franciso', 'Sanchez Castro','DiegoFrancisco@email.com', '7895-5698', '1990-02-02', '13456524-1','4','4'),    -- vigilancia
+	('5','Raul Edgardo', 'Del Valle Garcia', 'RaulEdgardo@email.com', '6598-2548', '1980-03-03', '19624716-2','5','5'),     -- conductor
+	('6','Mary Carmen', 'Perez de Hernandez', 'MaryCarmen@email.com',  '7965-2526', '1985-04-04', '67825193-3','6','6'),       -- doctor
+    ('7','María Fernanda', 'Gómez Martínez', 'mariafernanda@email.com', '3698-1478', '1991-12-10', '98765432-1', '8', '7'),      -- Laboratorista
+    ('8','Ana Gabriela', 'Pérez Rodríguez', 'anagabriela@email.com', '6112-5421', '1994-08-05', '87654321-0', '9', '8'),         -- ordenanza
+    ('9','Diego Alex', 'Castillo Pérez', 'alexPerez12@email.com', '6576-7728', '1989-10-13', '05553329-6', '10', '9'),         -- enfermero
+    ('10','Angela Maria', 'Escobar Torres', 'escobarAmaria@email.com', '7576-3428', '1996-02-01', '04213589-5', '7', '10'),     -- enfermero
+    ('11','Sabo', 'teur', 'saboteur1323@gmail.com','7556-1273','2002-02-01','04213589-5', '7','11');
     
 insert into doctores values
 -- idDoctor, idEmpleado, JVPM
@@ -659,6 +658,120 @@ insert into InsumosMedicos  values
  (3, 3, 3, 3),
  (4, 4, 4, 4),
  (5, 5, 5, 5);
+ 
+ 
+ insert into roles (rol) values
+	('Doctor'),
+    ('Secretaria'),
+    ('Cocinera'),
+    ('Enfermero'),
+    ('Laboratorista'),
+    ('Contador'),
+    ('Recursos Humanos'),
+    ('SysAdmin');
+    
+insert into opciones(opcion) values
+('Gestionar departamentos'),
+('Gestionar municipios'),
+('Gestionar distritos'),
+('Gestionar direcciones'),
+('Gestionar pacientes'),
+('Gestionar cargos'),
+('Gestionar empleados'),
+('Gestionar roles'),
+('Gestionar opciones'),
+('Gestionar asignacionRolesOpciones'),
+('Gestionar usuarios'),
+('Gestionar doctores'),
+('Gestionar especialidades'),
+('Gestionar tiposCitas'),
+('Gestionar citas'),
+('Gestionar consultorios'),
+('Gestionar tiposConsultas'),
+('Gestionar examenesFisicos'),
+('Gestionar recetas'),
+('Gestionar expediente'),
+('Gestionar consultas'),
+('Gestionar tiposProcedimientos'),
+('Gestionar procedimientosMedicos'),
+('Gestionar doctorEspecialidades'),
+('Gestionar laboratorista'),
+('Gestionar especialidadesLaboratorista'),
+('Gestionar tiposExamenes'),
+('Gestionar examenes'),
+('Gestionar tiposMedicamentos'),
+('Gestionar laboratorios'),
+('Gestionar medicamentos'),
+('Gestionar tiposEquiposMedicos'),
+('Gestionar proveedores'),
+('Gestionar inventario'),
+('Gestionar equiposMedicos'),
+('Gestionar medicamentosRecetados'),
+('Gestionar enfermeros'),
+('Gestionar personalProcedimientos'),
+('Gestionar tiposPago'),
+('Gestionar facturasConsultas'),
+('Gestionar facturasExamenes'),
+('Gestionar facturasProcedimientos'),
+('Gestionar detallesFacturasExamenes'),
+('Gestionar detallesFacturasProcedimientos'),
+('Gestionar insumosMedicos');
+
+insert into asignacionRolesOpciones (idRol, idOpcion) values
+	-- Sys
+	('8','1'),('8','2'),('8','3'),('8','4'),('8','5'),('8','6'),('8','7'),('8','8'),('8','9'),('8','10'),
+    ('8','11'),('8','12'),('8','13'),('8','14'),('8','15'),('8','16'),('8','17'),('8','18'),('8','19'),('8','20'),
+    ('8','21'),('8','22'),('8','23'),('8','24'),('8','25'),('8','26'),('8','27'),('8','28'),('8','29'),('8','30'),
+    ('8','31'),('8','32'),('8','33'),('8','34'),('8','35'),('8','36'),('8','37'),('8','38'),('8','39'),('8','40'),
+    ('8','41'),('8','42'),('8','43'),('8','44'),('8','45'),
+
+	-- Doctor
+	('1', '1'),('1', '2'), ('1', '3'),	('1', '4'),	('1', '5'),
+	('1', '14'),('1', '15'),('1', '20'),('1', '27'),('1', '28'),
+	('1', '38'),('1', '37'),('1', '23'),('1', '21'),('1', '18'),
+    ('1', '30'),('1', '29'),('1', '31'),('1', '19'),
+    
+	-- cocinera
+	('4', '20'), ('4', '5'), ('4','21'),
+    
+	-- Secretaria 2
+	(2,1), (2,2), (2,3), (2,4), (2,5), (2,6), (2,7), (2,12), (2,14), (2,15), (2,20), (2,21), 
+	(2,27), (2,28), (2,30), (2,32), (2,33), (2,35), (2,34), (2,37), (2,39), (2,40), (2,41), 
+	(2,42), (2,43), (2,44),
+
+	-- Contador  6
+	(6,27), (6,28), (6,32), (6,33), (6,34), (6,35), (6,36), (6,39), (6,40), (6,41), (6,42), 
+	(6,43), (6,44),
+	
+    -- enfermero: 
+    ('4','5'),	
+    ('4','20'),	
+    ('4','21'),	
+    ('4','17'),	
+    ('4','31'),	
+    -- laboratorista
+    ('5','5'),	
+    ('5','20'),	
+    ('5','27'), 
+    ('5','28'),	
+    -- Recursos humanos:
+    ('7','1'),
+    ('7','2'),
+    ('7','3'),
+    ('7','4'),
+    ('7','7'),
+    ('7','12'),
+    ('7','25');
+    
+insert into Usuarios(usuario, contraseña, idRol, idEmpleado) values
+	('user1', '123456789',1,1),
+	('user2','123456789',2,2),
+	('user3', '123456789',3,4),
+	('user4','123456789',4,7),
+	('user5', '123456789',5,8),
+	('user6','123456789',6,9),
+	('user7', '123456789',7,10),
+	('user8', '123456789',8,11);
  
  -- consultas
  

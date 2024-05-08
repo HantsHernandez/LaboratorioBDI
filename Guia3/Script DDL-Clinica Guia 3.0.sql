@@ -485,3 +485,38 @@ CREATE TABLE InsumosMedicos (
     FOREIGN KEY (idProcedimiento)
     REFERENCES ProcedimientosMedicos (idProcedimiento)
 );
+
+CREATE TABLE  opciones(
+	idOpcion INT AUTO_INCREMENT,
+    opcion VARCHAR(50) NOT NULL,
+    PRIMARY KEY (idOpcion)
+);
+
+CREATE TABLE roles(
+	idRol int auto_increment,
+    rol varchar(50) not null,
+    primary key(idRol)
+);
+CREATE TABLE Usuarios(
+  idUsuario int auto_increment,
+  usuario varchar(50) not null,
+  contraseña varchar(50) not null,
+  idRol int not null,
+  idEmpleado int not null,
+  primary key(idUsuario),
+  Foreign key(idRol) 
+  references roles(idRol),
+  Foreign Key(idEmpleado) 
+  references empleados(idEmpleado)
+);
+
+
+CREATE TABLE asignacionRolesOpciones(
+	idAsignacion int primary key auto_increment,
+	idRol int not null,
+	idOpcion int not null,
+    Foreign key(idRol) 
+	references roles(idROl),
+	Foreign Key(idOpcion)
+	references Opciones(idOpcion)
+);
