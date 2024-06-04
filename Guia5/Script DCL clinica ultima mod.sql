@@ -47,13 +47,13 @@ use clinica;
  grant select on clinica.examenes to Laboratorista;
  
  -- Recursos Humanos
- grant select, insert, update, delete on clinica.direcciones to Recursos_Humanos;
- grant select, insert, update, delete on clinica.empleados to Recursos_Humanos;
- grant select, insert, update, delete on clinica.doctores to Recursos_Humanos;
- grant select, insert, update, delete on clinica.especialidades to Recursos_Humanos;
- grant select on clinica.departamentos to Recursos_Humanos;
- grant select on clinica.municipios to Recursos_Humanos;
- grant select on clinica.distritos to Recursos_Humanos;
+ grant select, insert, update, delete on clinica.direcciones to 'hr_viviangildan'@'localhost';
+ grant select, insert, update, delete on clinica.empleados to 'hr_viviangildan'@'localhost';
+ grant select, insert, update, delete on clinica.doctores to 'hr_viviangildan'@'localhost';
+ grant select, insert, update, delete on clinica.especialidades to 'hr_viviangildan'@'localhost';
+ grant select on clinica.departamentos to 'hr_viviangildan'@'localhost';
+ grant select on clinica.municipios to 'hr_viviangildan'@'localhost';
+ grant select on clinica.distritos to 'hr_viviangildan'@'localhost';
  
  -- Contador
  grant select on clinica.tiposexamenes to Contador;

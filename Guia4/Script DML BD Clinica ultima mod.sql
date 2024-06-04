@@ -2,6 +2,8 @@
 
 use clinica;
 
+SET FOREIGN_KEY_CHECKS  = 0;
+
 insert into departamentos values
 -- idDepartamento, departamento, pais 
 	('AH', 'Ahuachapán', 'El Salvador'),
@@ -417,15 +419,15 @@ insert into cargos values
 
 insert into empleados values
 -- idEmpleado, nombresEmpleado, apellidosEmpleado, emailEmpleado,  telefonoEmpleado, fechaContratacion, DuiEmpleado, idDireccion, idTipoCargo
-	('1','Juan Carlos', 'Rodas Gonzalez', 'JuanCarlos@email.com','6532-4526', '1995-01-01','12345678-0','1','1'),           -- doctor
+	('1','Juan Carlos', 'Rodas Gonzalez', 'juancarlos@email.com','6532-4526', '1995-01-01','12345678-0','1','1'),           -- doctor
     ('2','Carlos José', 'Martínez López', 'carlos@email.com', '9632-7412', '1993-04-15', '23456789-0', '2', '2'),           -- secretario
     ('3','Pedro Manuel', 'Orellana Mendez', 'juanmanuel@email.com', '1478-8523', '1985-06-20', '12345678-9', '3', '1'),      -- doctor
-	('4','Diego Franciso', 'Sanchez Castro','DiegoFrancisco@email.com', '7895-5698', '1990-02-02', '13456524-1','4','5'),    -- vigilancia
-	('5','Raul Edgardo', 'Del Valle Garcia', 'RaulEdgardo@email.com', '6598-2548', '1980-03-03', '19624716-2','5','3'),     -- conductor
-	('6','Mary Carmen', 'Perez de Hernandez', 'MaryCarmen@email.com',  '7965-2526', '1985-04-04', '67825193-3','6','1'),       -- doctor
+	('4','Diego Franciso', 'Sanchez Castro','diegofrancisco@email.com', '7895-5698', '1990-02-02', '13456524-1','4','5'),    -- vigilancia
+	('5','Raul Edgardo', 'Del Valle Garcia', 'rauledgardo@email.com', '6598-2548', '1980-03-03', '19624716-2','5','3'),     -- conductor
+	('6','Mary Carmen', 'Perez de Hernandez', 'marycarmen@email.com',  '7965-2526', '1985-04-04', '67825193-3','6','1'),       -- doctor
     ('7','María Fernanda', 'Gómez Martínez', 'mariafernanda@email.com', '3698-1478', '1991-12-10', '98765432-1', '8', '8'),      -- Laboratorista
     ('8','Ana Gabriela', 'Pérez Rodríguez', 'anagabriela@email.com', '6112-5421', '1994-08-05', '87654321-0', '9', '6'),         -- ordenanza
-    ('9','Diego Alex', 'Castillo Pérez', 'alexPerez12@email.com', '6576-7728', '1989-10-13', '05553329-6', '10', '7'),         -- enfermero
+    ('9','Diego Alex', 'Castillo Pérez', 'alexperez12@email.com', '6576-7728', '1989-10-13', '05553329-6', '10', '7'),         -- enfermero
     ('10','Angela Maria', 'Escobar Torres', 'escobarAmaria@email.com', '7576-3428', '1996-02-01', '04213589-5', '7', '7'),     -- enfermero
     ('11','Vivian Aurora','Gildan Perez','vagp@email.com','8790-0005','2000-03-24', '67842234-9','9','11'),   -- Recursos Humanos
     ('12','Lilian Diana','Smith Contreras','ldsc@email.com','4565-7780','1990-12-24','44456756-2','12','8'),   -- Laboratorista
@@ -445,15 +447,15 @@ insert into empleados values
     
     
 insert into doctores values
--- idDoctor, idEmpleado, JVPM
-    ('1', '1', '1234567'),
-    ('2', '3', '2345678'),
-    ('3', '6', '3456789'),
-    ('4','15','6674358'),
-    ('5','16','1541239'),
-    ('6','17','8793451'),
-    ('7','18','1237891'),
-    ('8','19','3450989');
+-- idDoctor, idEmpleado, JVPM, idEspecialidad
+    ('1', '1', '1234567', '1'),
+    ('2', '3', '2345678', '2'),
+    ('3', '6', '3456789', '3'),
+    ('4','15','6674358', '4'),
+    ('5','16','1541239', '5'),
+    ('6','17','8793451', '10'),
+    ('7','18','1237891', '7'),
+    ('8','19','3450989', '9');
     
 insert into especialidades  values
 -- idEspecialidad, nombreEspecialidad
@@ -529,48 +531,47 @@ insert into examenesFisicos  values
   ('10','95 bpm','115/75 mmHg','36.7°C','Normal','Tranquilo','Pupilas iguales y reactivas','Audición normal','Cabeza simétrica','Sin distensión abdominal','Sin edema en extremidades','Normal'),
   ('11','80 bpm','120/80 mmHg','37.0°C','Normal','Inquieto','Sin alteraciones', 'Audición normal','Cabeza simétrica','Sin dolor a la palpación','Sin edema en extremidades','Normal');
 
-insert into recetas  values
--- idrecetas, fechaReceta, duracionReceta
-  ('1','2024-04-10', 7),
-  ('2','2024-04-11', 10),
-  ('3','2024-04-12', 4),
-  ('4','2024-04-13', 5),
-  ('5','2024-04-14', 1),
-  ('6','2024-04-29', 3),
-  ('7','2024-04-30', 7),
-  ('8','2024-05-01', 14),
-  ('9','2024-05-02', 10),
-  ('10','2024-05-03', 5),
-  ('11','2024-05-04', 3);
+insert into recetas (idExpediente, fechaReceta, duracionReceta) values
+-- idExpediente, fechaReceta, duracionReceta
+  ('1','2024-04-10', '7'),
+  ('2','2024-04-11', '10'),
+  ('3','2024-04-12', '4'),
+  ('4','2024-04-13', '5'),
+  ('5','2024-04-14', '1'),
+  ('6','2024-04-29', '3'),
+  ('7','2024-04-30', '7'),
+  ('8','2024-05-01', '14'),
+  ('9','2024-05-02', '10'),
+  ('10','2024-05-03', '5');
+
   
   
-insert into expediente  values
--- idExpediente, padecimiento, alergias, tratamiento, notasAdicionales, idPaciente
+insert into expediente (idReceta, padecimiento, alergia, tratamiento, notaAdicional, idPaciente)  values
+-- idReceta, padecimiento, alergias, tratamiento, notasAdicionales, idPaciente
   ('1','Hipertensión arterial','Ninguna','Losartán 50mg diario','N/A','1'),
   ('2','Diabetes tipo 2','Penicilina','Metformina 1000mg diario','N/A','2'),
   ('3','Asma', 'Aspirina','Salbutamol inhalador según necesidad','N/A','3'),
   ('4','Sin padecimientos conocidos','Ninguna','N/A','N/A','4'),
   ('5','Dolor de espalda crónico','Ninguna','Fisioterapia','N/A','5'),
-  ('6','Fractura de brazo','Ninguna','Férula y reposo','Revisión mensual de la evolución','5'),
-  ('7','Dolor crónico de espalda','Ninguna','Terapia física','Ejercicios recomendados para mejorar la postura','6'),
-  ('8','Lesión en la rodilla','Ninguna','Rehabilitación','Evitar actividades de alto impacto','7'),
-  ('9','Gastritis','Ninguna', 'Antiácidos y dieta','Evitar comidas muy condimentadas','8'),
-  ('10','Intoxicación alimentaria','Alimentos contaminados','Hidratación y dieta suave','Reposo y evitar alimentos no cocidos','9'),
-  ('11','Depresión','Ninguna','Terapia psicológica y medicación','Seguimiento mensual con psiquiatra','10');
+  ('6','Fractura de brazo','Ninguna','Férula y reposo','Revisión mensual de la evolución','6'),
+  ('7','Dolor crónico de espalda','Ninguna','Terapia física','Ejercicios recomendados para mejorar la postura','7'),
+  ('8','Lesión en la rodilla','Ninguna','Rehabilitación','Evitar actividades de alto impacto','8'),
+  ('9','Gastritis','Ninguna', 'Antiácidos y dieta','Evitar comidas muy condimentadas','9'),
+  ('10','Intoxicación alimentaria','Alimentos contaminados','Hidratación y dieta suave','Reposo y evitar alimentos no cocidos','10');
   
 insert into consultas  values
 -- idConsulta, diagnosticoConsulta, estadoConsulta, idTipoConsultas, idExamenFisico, idDoctor, idRecetas, idCita, idConsultorio, idExpediente
-  ('1','Dolor de cabeza','finalizada','1','1','1','1','1','1','1'),
-  ('2','Dolor abdominal','pendiente','2','2','2','2','2','2','2'),
-  ('3','Fiebre','cancelada','3','3','3','3','3','3','3'),
-  ('4','Problemas respiratorios','finalizada','4','4','1','4','4','4','4'),
-  ('5','Examen de rutina','pendiente','5','5','2','5','5','5','5'),
-  ('6','Presión arterial alta','Finalizada','5','5','3','5','5','5','5'),
-  ('7','Dolor de cabeza severo','Finalizada','1','6','4','6','6','1','6'),
-  ('8','Lesión en la rodilla','Finalizada','9','7','5','7','7','2','7'),
-  ('9','Resfriado leve','Finalizada','6','8','6','8','8','3','8'),
-  ('10','Consulta de seguimiento','Finalizada','7','9','7','9','9','4','9'),
-  ('11','Consulta preventiva','Finalizada','5','10','8','10','10','5','10');
+  ('1','Dolor de cabeza','finalizada', '2024-04-10','1','1','1','1','1','1','1'),
+  ('2','Dolor abdominal','pendiente', '2024-04-23','2','2','2','2','2','2','2'),
+  ('3','Fiebre','cancelada', '2024-03-12', '3','3','3','3','3','3','3'),
+  ('4','Problemas respiratorios','finalizada', '2024-09-10', '4','4','1','4','4','4','4'),
+  ('5','Examen de rutina','pendiente', '2024-10-10', '5','5','2','5','5','5','5'),
+  ('6','Presión arterial alta','Finalizada', '2024-11-11', '5','5','3','5','5','5','5'),
+  ('7','Dolor de cabeza severo','Finalizada', '2024-04-29', '1','6','4','6','6','1','6'),
+  ('8','Lesión en la rodilla','Finalizada', '2024-04-15', '9','7','5','7','7','2','7'),
+  ('9','Resfriado leve','Finalizada', '2024-12-23', '6','8','6','8','8','3','8'),
+  ('10','Consulta de seguimiento','Finalizada', '2024-01-10', '7','9','7','9','9','4','9'),
+  ('11','Consulta preventiva','Finalizada', '2024-07-24', '5','10','8','10','10','5','10');
 
 insert into tiposProcedimientos  values
 -- idTipoProcedimiento, tipoProcedimiento, descripcionProcedimiento
@@ -758,11 +759,11 @@ insert into medicamentosRecetados  values
   (3, 3, 'Aplicar una capa delgada sobre la piel afectada cada noche'),
   (4, 4, 'Tomar 2 tabletas cada 6 horas después de las comidas'),
   (5, 5, 'Tomar 1 tableta al día antes de dormir'),
-  (1, 6, '500mg cada 8 horas'),
-  (2, 6, '200mg cada 12 horas'),
-  (3, 7, '500mg cada 6 horas'),
-  (4, 7, '10mg una vez al día'),
-  (5, 8, '20mg una vez al día');
+  (6, 6, '500mg cada 8 horas'),
+  (7, 7, '200mg cada 12 horas'),
+  (8, 8, '500mg cada 6 horas'),
+  (9, 9, '10mg una vez al día'),
+  (10, 10, '20mg una vez al día');
   
 insert into  enfermeros  values
 -- idEnfermeros, idEmpleado, JVPE
@@ -976,6 +977,7 @@ insert into asignacionRolesOpciones (idRol, idOpcion) values
 	('user7', '123456789',7,11),	-- recursos humanos
 	('user8', '123456789',8,14);	-- sys admin
  
+ SET FOREIGN_KEY_CHECKS  = 1;
 
  -- consultas
  -- Realizar 2 consultas, que lleven al menos, un campo definido y WHERE.
